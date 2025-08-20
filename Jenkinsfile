@@ -2,21 +2,14 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3' // Make sure Maven3 is configured in Jenkins
+        maven 'Maven3'
     }
 
     environment {
-        // This is must match the ID of your SonarQube token stored in Jenkins credentials
         SONAR_TOKEN = credentials('SONAR_TOKEN')
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/Kundla-Sandhyarani/Project-10.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
