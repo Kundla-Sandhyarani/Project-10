@@ -6,8 +6,8 @@ pipeline {
     }
 
     environment {
-        // Optional: If you're using SonarQube, set the token securely in Jenkins credentials
-        SONAR_TOKEN = credentials('sonar-token-id')
+        // This must match the ID of your SonarQube token stored in Jenkins credentials
+        SONAR_TOKEN = credentials('SONAR_TOKEN')
     }
 
     stages {
@@ -30,9 +30,6 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            when {
-                expression { return env.SONAR_TOKEN != null }
-            }
             steps {
                 withSonarQubeEnv('MySonarQubeServer') {
                     sh 'mvn sonar:sonar'
@@ -43,10 +40,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build completed successfully!'
+            echo '✅ Build and analysis completed successfully!'
         }
         failure {
-            echo 'Build failed. Please check the logs.'
+            echo '❌ Build failed. Please check the logs for details.'
         }
     }
 }
