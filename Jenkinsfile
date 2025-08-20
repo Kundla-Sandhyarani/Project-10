@@ -29,6 +29,16 @@ pipeline {
                 }
             }
         }
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t project-10-image .'
+            }
+        }
+        stage('Docker Run') {
+            steps {
+                sh 'docker run -d --name project-10-container -p 8080:8080 project-10-image'
+            }
+        }
     }
 
     post {
