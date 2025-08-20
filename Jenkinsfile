@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.8.1' // Match your Jenkins tool config
-    }
-
-    environment {
-        SONAR_TOKEN = credentials('sonar-token') // Add this in Jenkins credentials
+        maven 'Maven 3.8.1'
     }
 
     stages {
@@ -31,7 +27,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('MySonarQubeServer') {
-                    sh 'mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN'
+                    sh 'mvn sonar:sonar'
                 }
             }
         }
