@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/demo-java-sonar.git'
+                git clone 'https://github.com/Kundla-Sandhyarani/Project-10.git'
             }
         }
 
