@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Docker Run') {
             steps {
-                sh 'docker run -d --name project-10-container -p 8080:8080 project-10-image'
+                sh 'docker run -d --name project-10-container -p 3000:3000 project-10-image'
             }
         }
     }
