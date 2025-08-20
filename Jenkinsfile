@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        // This must match the ID of your SonarQube token stored in Jenkins credentials
+        // This is must match the ID of your SonarQube token stored in Jenkins credentials
         SONAR_TOKEN = credentials('SONAR_TOKEN')
     }
 
