@@ -36,12 +36,12 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build -t Project-10-image .'
+                sh 'docker build -t project-10-image .'
             }
         }
         stage('Docker Run') {
             steps {
-                sh 'docker run -d --name project-10-container -p 3000:3000 Project-10-image'
+                sh 'docker run -d --name project-10-container -p 3000:3000 project-10-image'
             }
         }
     }
